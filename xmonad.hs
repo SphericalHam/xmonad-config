@@ -2,7 +2,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Config.Desktop(desktopConfig, desktopLayoutModifiers)
 
 
@@ -24,6 +24,9 @@ main = do
                                 }
                 , modMask    = mod4Mask  -- Rebind Mod to the Windows key
                 }
+                `additionalKeysP`
+                [ ("M-S-l", spawn "xscreensaver-command -lock")
+                ]
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
                        ThreeCol 1 (3/100) (1/2) ||| 
