@@ -1,0 +1,12 @@
+# My xmonad config
+
+Self explanatory, right?
+
+Mostly liberated from various places on the intertubes.
+
+## How to use
+
+Use your package manager to install xmonad, xmonad-contrib and xmobar.
+Just drop `xomand.hs` into `~/.xmoand` and `xmobarrc` into `~/.xmobarrc`.
+
+Or run the linker script provided to set up symlinks to this repo.
