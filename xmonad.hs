@@ -23,6 +23,7 @@ main = do
                                 , ppTitle        =  xmobarColor "green" ""
                                 }
                 , modMask    = mod4Mask  -- Rebind Mod to the Windows key
+                , terminal   = "terminator"
                 }
                 `additionalKeysP`
                 [ ("M-S-l", spawn "xscreensaver-command -lock")
