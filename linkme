@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CFGDIR="$(dirname "$(readlink --canonicalize "$0")")"
+XMOBARCFG=~/.xmobarrc
+XMONADDIR=~/.xmonad
+XMONADCFG=xmonad.hs
+
+ln --symbolic --no-dereference --backup "$CFGDIR/xmobarrc" "$XMOBARCFG"
+mkdir --parents "$XMONADDIR"
+ln --symbolic --no-dereference --backup "$CFGDIR/xmoand.hs" "$XMONADDIR/$XMONADCFG"
