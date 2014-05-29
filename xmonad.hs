@@ -32,6 +32,6 @@ main = do
                 ]
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
-                       ThreeColMid 1 (3/100) (1/2) |||
                        autoMaster 1 (1/100) Grid |||
+                       ThreeColMid 1 (3/100) (1/2) |||
                        layoutHook defaultConfig
