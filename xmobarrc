@@ -5,11 +5,11 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
         , lowerOnStart = True
         , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                      , Run Memory ["-t","Mem: <usedratio>%"] 10
-                     , Run Swap [] 10
+                     , Run Battery ["--template","Batt: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc>","-i","<fc=#006000>Charged</fc>"] 50
                      , Run Date "%a %b %_d %H:%M" "date" 10
                      , Run StdinReader
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{ %cpu% | %memory% * %swap%    <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% }{ %cpu% | %memory% | %battery%    <fc=#ee9a00>%date%</fc>"
         }
