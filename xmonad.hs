@@ -7,8 +7,9 @@ import XMonad.Config.Desktop(desktopConfig, desktopLayoutModifiers)
 
 
 import XMonad.Layout.AutoMaster
-import XMonad.Layout.Grid
+import XMonad.Layout.GridVariants
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Named
 
 
 import System.IO
@@ -33,5 +34,5 @@ main = do
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
                        ThreeColMid 1 (3/100) (1/2) |||
-                       autoMaster 1 (1/100) Grid |||
+                       named "Slave Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
                        layoutHook defaultConfig
