@@ -24,6 +24,6 @@ xfce4-panel --disable-wm-check --sm-client-disable &
 wicd-gtk --tray &
 xscreensaver &
 
-(sleep 1; ~/git/autorandr/autorandr --change) &
+(sleep 1; xrandr; sleep 1; ~/git/autorandr/autorandr --change) &
 
 exec xmonad
