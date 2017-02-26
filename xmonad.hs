@@ -30,6 +30,7 @@ main = do
                 [ ("M-S-l", spawn "xscreensaver-command -lock")
                 , ("M-S-x", spawn "/home/mike/bin/autorandr --change")
                 , ("M-S-i", spawn "/home/mike/bin/autorandr --load internal-only")
+                , ("M-S-s", spawn "/home/mike/bin/autoscreengrab")
                 ]
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
