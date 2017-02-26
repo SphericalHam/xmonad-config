@@ -16,9 +16,8 @@ import System.IO
 
 main = do
         xmproc <- spawnPipe "xmobar"
-        xmonad $ defaultConfig
-                { manageHook = manageDocks      <+> manageHook defaultConfig
-                , layoutHook = avoidStruts       $  myLayoutHook
+        xmonad $ docks def
+                { layoutHook = myLayoutHook
                 , logHook    = dynamicLogWithPP  $  xmobarPP
                                 { ppOutput       =  hPutStrLn xmproc
                                 , ppTitle        =  xmobarColor "green" ""
