@@ -35,4 +35,4 @@ main = do
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
                        named "Slave Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
                        ThreeColMid 1 (3/100) (1/2) |||
-                       layoutHook defaultConfig
+                       layoutHook def
