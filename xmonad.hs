@@ -30,6 +30,8 @@ main = do
                 , ("M-S-x", spawn "/home/mike/bin/autorandr --change")
                 , ("M-S-i", spawn "/home/mike/bin/autorandr --load internal-only")
                 , ("M-S-s", spawn "/home/mike/bin/autoscreengrab")
+                , ("<XF86AudioPlay>", spawn "pianoctl p")
+                , ("<XF86AudioNext>", spawn "pianoctl n")
                 ]
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
