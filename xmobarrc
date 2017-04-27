@@ -9,9 +9,10 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      , Run BatteryN ["BAT0"] ["--template","Batt0: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50 "battery0"
                      , Run BatteryN ["BAT1"] ["--template","Batt1: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50 "battery1"
                      , Run Date "%a %b %_d %H:%M" "date" 10
+                     , Run Com "/home/mike/bin/nextappointment" [] "napp" 6000
                      , Run StdinReader
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{ %cpu% | %memory% | %battery% %battery0% %battery1%  <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% }{ %cpu% | %memory% | <fc=#336600>%napp%</fc> | %battery% %battery0% %battery1%  <fc=#ee9a00>%date%</fc>"
         }
