@@ -23,6 +23,7 @@ xcompmgr &
 xfce4-panel --disable-wm-check --sm-client-disable &
 wicd-gtk --tray &
 xscreensaver &
+blueman-applet &
 
 (sleep 1; ~/git/autorandr/autorandr --change) &
 
