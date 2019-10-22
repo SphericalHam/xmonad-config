@@ -15,5 +15,6 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{ %cpu% | %memory% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery% %battery0% %battery1%  <fc=#ee9a00>%date%</fc>"
+        --, template = "%StdinReader% }{ %cpu% | %memory% | %thermal0%, %thermal1%, %thermal2%, %thermal3%, %thermal4%, %thermal5%, %thermal6% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
         }
