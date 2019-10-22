@@ -9,6 +9,7 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      , Run Com "/usr/bin/nice" ["-n", "19", "/home/msharp/bin/utcdate"] "date" 10
                      , Run Com "/home/msharp/bin/nextappointment" [] "napp" 6000
                      , Run Com "/usr/bin/nice" ["-n","19","/home/msharp/bin/showvol"] "volume" 10
+                     , Run ThermalZone 0 ["-t", "Temp: <temp>°"] 30
                      , Run StdinReader
                      ]
         , sepChar = "%"
