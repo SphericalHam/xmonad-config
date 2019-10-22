@@ -27,11 +27,11 @@ main = do
                 }
                 `additionalKeysP`
                 [ ("M-S-l", spawn "xscreensaver-command -lock")
-                , ("M-S-x", spawn "/home/mike/bin/autorandr --change")
-                , ("M-S-i", spawn "/home/mike/bin/autorandr --load internal-only")
-                , ("M-S-s", spawn "/home/mike/bin/autoscreengrab")
                 , ("<XF86AudioPlay>", spawn "/home/mike/bin/pianoctl p")
                 , ("<XF86AudioNext>", spawn "/home/mike/bin/pianoctl n")
+                , ("M-S-x", spawn "~/bin/autorandr --change")
+                , ("M-S-i", spawn "~/bin/autorandr --load internal-only")
+                , ("M-S-s", spawn "~/bin/autoscreengrab")
                 , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
                 , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
                 , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
