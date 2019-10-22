@@ -8,9 +8,9 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      , Run Battery ["--template","Batt: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50
                      , Run BatteryN ["BAT0"] ["--template","Batt0: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50 "battery0"
                      , Run BatteryN ["BAT1"] ["--template","Batt1: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50 "battery1"
-                     , Run Com "/home/mike/bin/nextappointment" [] "napp" 6000
-                     , Run Com "/home/mike/bin/showvol" [] "volume" 10
                      , Run Com "/usr/bin/nice" ["-n", "19", "/home/msharp/bin/utcdate"] "date" 10
+                     , Run Com "/home/msharp/bin/nextappointment" [] "napp" 6000
+                     , Run Com "/usr/bin/nice" ["-n","19","/home/msharp/bin/showvol"] "volume" 10
                      , Run StdinReader
                      ]
         , sepChar = "%"
