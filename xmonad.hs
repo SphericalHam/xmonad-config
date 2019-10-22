@@ -33,6 +33,7 @@ main = do
                 , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
                 , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
                 , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
+                , ("<XF86Sleep>", spawn "xscreensaver-command -lock")
                 ]
           where
                 myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
