@@ -9,16 +9,10 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      , Run Com "/usr/bin/nice" ["-n", "19", "/home/msharp/bin/utcdate"] "date" 10
                      , Run Com "/home/msharp/bin/nextappointment" [] "napp" 6000
                      , Run Com "/usr/bin/nice" ["-n","19","/home/msharp/bin/showvol"] "volume" 10
-                     , Run ThermalZone 0 ["-t", "0: <temp>°C"] 30
-                     , Run ThermalZone 1 ["-t", "1: <temp>°C"] 30
-                     , Run ThermalZone 2 ["-t", "2: <temp>°C"] 30
-                     , Run ThermalZone 3 ["-t", "3: <temp>°C"] 30
-                     , Run ThermalZone 4 ["-t", "4: <temp>°C"] 30
-                     , Run ThermalZone 5 ["-t", "5: <temp>°C"] 30
-                     , Run ThermalZone 6 ["-t", "6: <temp>°C"] 30
+                     , Run ThermalZone 0 ["-t", "Temp: <temp>°"] 30
                      , Run StdinReader
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{ %cpu% | %memory% | %thermal0%, %thermal1%, %thermal2%, %thermal3%, %thermal4%, %thermal5%, %thermal6% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
         }
