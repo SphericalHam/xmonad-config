@@ -27,8 +27,6 @@ main = do
                 }
                 `additionalKeysP`
                 [ ("M-S-l", spawn "xscreensaver-command -lock")
-                , ("<XF86AudioPlay>", spawn "/home/mike/bin/pianoctl p")
-                , ("<XF86AudioNext>", spawn "/home/mike/bin/pianoctl n")
                 , ("M-S-x", spawn "~/bin/autorandr --change")
                 , ("M-S-i", spawn "~/bin/autorandr --load internal-only")
                 , ("M-S-s", spawn "~/bin/autoscreengrab")
