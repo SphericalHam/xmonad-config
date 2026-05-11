@@ -9,7 +9,7 @@ import XMonad.Config.Desktop(desktopConfig, desktopLayoutModifiers)
 import XMonad.Layout.AutoMaster
 import XMonad.Layout.GridVariants
 import XMonad.Layout.ThreeColumns
-import XMonad.Layout.Named
+import XMonad.Layout.Renamed
 import XMonad.Layout.NoBorders
 
 
