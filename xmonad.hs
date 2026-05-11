@@ -38,10 +38,14 @@ main = do
                 , ("<XF86Sleep>", spawn "xscreensaver-command -lock")
                 ]
           where
-                myLayoutHook            = desktopLayoutModifiers $              --layout hooks: add a multicolumn layout to the default set
-                       named "Slave Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
+                myLayoutHook            = desktopLayoutModifiers $
+                       named "Growing Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
                        ThreeColMid 1 (3/100) (1/2) |||
                        Tall 1 (3/100) (1/2) |||
-                       Mirror (Tall 1 (3/100) (1/2)) |||
+                       named "Presentation" (Mirror (Tall 1 (3/100) (1/2))) |||
                        noBorders Full
                        --layoutHook def
+                       --
+                       --
+                       -- When bug-fixing becomes a thing:
+                       --  add to myLayoutHook: "lessBorders OtherIndicated $" or "lessBorders Screen $"
