@@ -31,6 +31,7 @@ main = do
                 , ("M-S-x", spawn "~/bin/autorandr --change")
                 , ("M-S-i", spawn "~/bin/autorandr --load internal-only")
                 , ("M-S-s", spawn "~/bin/autoscreengrab")
+                , ("M-S-z", spawn "~/bin/grab-screen-to-clipboard")
                 , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
                 , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
                 , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
