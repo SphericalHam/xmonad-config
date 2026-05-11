@@ -1,4 +1,4 @@
-Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+Config  { font = "fixed bold 9"
         , bgColor = "black"
         , fgColor = "grey"
         , position = BottomW R 90
@@ -8,11 +8,13 @@ Config  { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                      , Run Battery ["--template","Batt: <acstatus>","--Low","10","--High","80","--low","darkred","--normal","darkorange","--high","darkgreen","--","-o","<left>% (<timeleft>)","-O","<fc=#dAA520>Charging</fc> (<timeleft>)","-i","<fc=#006000>Charged</fc>"] 50
                      , Run Com "/usr/bin/nice" ["-n", "19", "/home/msharp/bin/utcdate"] "date" 10
                      , Run Com "/home/msharp/bin/nextappointment" [] "napp" 6000
-                     , Run Com "/usr/bin/nice" ["-n","19","/home/msharp/bin/showvol"] "volume" 10
+                     --, Run Com "/usr/bin/nice" ["-n","19","/home/msharp/bin/showvol"] "volume" 10
                      , Run ThermalZone 0 ["-t", "Temp: <temp>°"] 30
                      , Run StdinReader
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
+        --, template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | Vol: %volume% | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
+        --, template = "%StdinReader% }{ %cpu% | %memory% | %thermal0% | Vol: (hidden) | <fc=#336600>%napp%</fc> | %battery%  <fc=#ee9a00>%date%</fc>"
         }
