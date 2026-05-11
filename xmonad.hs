@@ -10,19 +10,32 @@ import XMonad.Layout.AutoMaster
 import XMonad.Layout.GridVariants
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
-import XMonad.Layout.NoBorders
+import qualified XMonad.StackSet as W
 
 
 import System.IO
+
+loneWindowBorders :: X ()
+loneWindowBorders = withDisplay $ \d -> do
+    ws <- gets windowset
+    bw <- asks (borderWidth . config)
+    mapM_ (\scr ->
+        case W.stack (W.workspace scr) of
+            Nothing -> return ()
+            Just stk -> do
+                let wins = W.integrate stk
+                    b    = if length wins == 1 then 0 else bw
+                io $ mapM_ (\w -> setWindowBorderWidth d w b) wins
+        ) (W.current ws : W.visible ws)
 
 main = do
         xmproc <- spawnPipe "xmobar"
         xmonad $ docks def
                 { layoutHook = myLayoutHook
-                , logHook    = dynamicLogWithPP  $  xmobarPP
+                , logHook    = dynamicLogWithPP xmobarPP
                                 { ppOutput       =  hPutStrLn xmproc
                                 , ppTitle        =  xmobarColor "green" ""
-                                }
+                                } >> loneWindowBorders
                 , modMask    = mod4Mask  -- Rebind Mod to the Windows key
                 , terminal   = "terminator"
                 }
@@ -43,9 +56,4 @@ main = do
                        ThreeColMid 1 (3/100) (1/2) |||
                        Tall 1 (3/100) (1/2) |||
                        named "Presentation" (Mirror (Tall 1 (3/100) (1/2))) |||
-                       noBorders Full
-                       --layoutHook def
-                       --
-                       --
-                       -- When bug-fixing becomes a thing:
-                       --  add to myLayoutHook: "lessBorders OtherIndicated $" or "lessBorders Screen $"
+                       Full
