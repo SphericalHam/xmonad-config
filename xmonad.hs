@@ -20,14 +20,20 @@ loneWindowBorders :: X ()
 loneWindowBorders = withDisplay $ \d -> do
     ws <- gets windowset
     bw <- asks (borderWidth . config)
-    mapM_ (\scr ->
+    changess <- mapM (\scr ->
         case W.stack (W.workspace scr) of
-            Nothing -> return ()
+            Nothing -> return []
             Just stk -> do
                 let wins = W.integrate stk
                     b    = if length wins == 1 then 0 else bw
-                io $ mapM_ (\w -> setWindowBorderWidth d w b) wins
+                mapM (\w -> do
+                    wa <- io $ getWindowAttributes d w
+                    if fromIntegral (wa_border_width wa) /= b
+                        then io (setWindowBorderWidth d w b) >> return True
+                        else return False
+                    ) wins
         ) (W.current ws : W.visible ws)
+    if or (concat changess) then windows id else return ()
 
 main = do
         xmproc <- spawnPipe "xmobar"
