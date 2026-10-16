@@ -12,6 +12,7 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import qualified XMonad.StackSet as W
+import qualified Data.Set as S
 
 
 import System.IO
@@ -20,12 +21,16 @@ loneWindowBorders :: X ()
 loneWindowBorders = withDisplay $ \d -> do
     ws <- gets windowset
     bw <- asks (borderWidth . config)
+    mapped' <- gets mapped
     changess <- mapM (\scr ->
         case W.stack (W.workspace scr) of
             Nothing -> return []
             Just stk -> do
-                let wins = W.integrate stk
-                    b    = if length wins == 1 then 0 else bw
+                -- Count only windows that are actually shown: layouts
+                -- like Full keep other windows in the stack but unmap them.
+                let wins  = W.integrate stk
+                    shown = filter (`S.member` mapped') wins
+                    b     = if length shown == 1 then 0 else bw
                 mapM (\w -> do
                     wa <- io $ getWindowAttributes d w
                     if fromIntegral (wa_border_width wa) /= b
@@ -59,13 +64,20 @@ main = do
                 ]
           where
                 myLayoutHook = desktopLayoutModifiers $
-                        onWorkspace "4" presentationFirst defaultLayouts
+                        onWorkspace "4" presentationFirst $
+                        onWorkspace "9" fullFirst defaultLayouts
                 presentationFirst =
                         named "Presentation" (Mirror (Tall 1 (3/100) (1/2))) |||
                         named "Growing Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
                         ThreeColMid 1 (3/100) (1/2) |||
                         Tall 1 (3/100) (1/2) |||
                         Full
+                fullFirst =
+                        Full |||
+                        named "Growing Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
+                        ThreeColMid 1 (3/100) (1/2) |||
+                        Tall 1 (3/100) (1/2) |||
+                        named "Presentation" (Mirror (Tall 1 (3/100) (1/2)))
                 defaultLayouts =
                         named "Growing Grid" (autoMaster 1 (1/100) (Grid (16/9))) |||
                         ThreeColMid 1 (3/100) (1/2) |||
